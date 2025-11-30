@@ -1,0 +1,25 @@
+{
+  "name": "sql-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noaeneyo-ctrl/sql-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noaeneyo-ctrl/sql-project/issues"
+  },
+  "homepage": "https://github.com/noaeneyo-ctrl/sql-project#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.15.3",
+    "nodemon": "^3.1.11"
+  }
+}
