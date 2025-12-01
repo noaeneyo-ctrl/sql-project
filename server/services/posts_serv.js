@@ -1,6 +1,6 @@
 const {
   fetchAllPosts,
-  fetchUserPosts,
+  fetchPostById,
   addPostToDb,
   deletePostInDb,
 } = require("../repositories/posts_repo");
@@ -10,9 +10,9 @@ async function getAllPosts() {
   return posts;
 }
 
-async function getUserPosts(userId) {
-  const posts = await fetchUserPosts(userId);
-  return posts;
+async function getPostById(postId) {
+  const posts = await fetchPostById(postId);
+  return posts.length ? posts[0] : null;
 }
 
 async function addPost(body) {
@@ -24,7 +24,7 @@ async function deletePost(postId) {
 }
 module.exports = {
   getAllPosts,
-  getUserPosts,
+  getPostById,
   addPost,
   deletePost,
 };
