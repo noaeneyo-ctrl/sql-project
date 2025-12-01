@@ -4,6 +4,7 @@ const {
   getAllPosts,
   getUserPosts,
   addPost,
+  deletePost,
 } = require("../services/posts_serv");
 
 router.get("/", async (req, res) => {
@@ -34,6 +35,15 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     addPost(req.body);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    deletePost(userId);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

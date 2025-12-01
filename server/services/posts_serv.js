@@ -2,6 +2,7 @@ const {
   fetchAllPosts,
   fetchUserPosts,
   addPostToDb,
+  deletePostInDb,
 } = require("../repositories/posts_repo");
 
 async function getAllPosts() {
@@ -17,4 +18,7 @@ async function addPost(body) {
   const posts = await addPostToDb(body);
   return posts;
 }
-module.exports = { getAllPosts, getUserPosts, addPost };
+async function deletePost(userId) {
+  deletePostInDb(userId);
+}
+module.exports = { getAllPosts, getUserPosts, addPost, deletePost };
