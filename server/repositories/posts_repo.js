@@ -23,7 +23,7 @@ function fetchUserPosts(userId) {
 }
 
 function addPostToDb(body) {
-  const user_id = body.userId;
+  const user_id = body.user_id;
   const title = body.title;
   const content = body.content;
   const sql = `INSERT INTO last_project_db.posts (user_id, title, content)
