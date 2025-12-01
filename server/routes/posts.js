@@ -34,16 +34,18 @@ router.get("/:id", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
-    addPost(req.body);
+    await addPost(req.body);
+    res.json(posts);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-router.delete("/:id", async (req, res) => {
-  const userId = req.params.id;
+router.delete("/:postId", async (req, res) => {
+  const postId = req.params.postId;
   try {
-    deletePost(userId);
+    await deletePost(postId);
+    res.json(`the post with id ${postId} is deleted`);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -14,11 +14,17 @@ async function getUserPosts(userId) {
   const posts = await fetchUserPosts(userId);
   return posts;
 }
+
 async function addPost(body) {
   const posts = await addPostToDb(body);
   return posts;
 }
-async function deletePost(userId) {
-  deletePostInDb(userId);
+async function deletePost(postId) {
+  deletePostInDb(postId);
 }
-module.exports = { getAllPosts, getUserPosts, addPost, deletePost };
+module.exports = {
+  getAllPosts,
+  getUserPosts,
+  addPost,
+  deletePost,
+};
