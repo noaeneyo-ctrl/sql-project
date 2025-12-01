@@ -1,6 +1,10 @@
 var express = require("express");
 var router = express.Router();
-const { getAllPosts, getUserPosts } = require("../services/posts_serv");
+const {
+  getAllPosts,
+  getUserPosts,
+  addPost,
+} = require("../services/posts_serv");
 
 router.get("/", async (req, res) => {
   try {
@@ -23,6 +27,13 @@ router.get("/:id", async (req, res) => {
     }
 
     res.json(posts);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+router.post("/", async (req, res) => {
+  try {
+    addPost(req.body);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

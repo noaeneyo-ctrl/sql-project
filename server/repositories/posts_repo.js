@@ -22,4 +22,19 @@ function fetchUserPosts(userId) {
   });
 }
 
-module.exports = { fetchAllPosts, fetchUserPosts };
+function addPostToDb(body) {
+  const user_id = body.userId;
+  const title = body.title;
+  const content = body.content;
+  const sql = `INSERT INTO posts (user_id, title, content)
+VALUES (?, ?, ?);`;
+
+  return new Promise((resolve, reject) => {
+    con.query(sql, [user_id, title, content], (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
+}
+
+module.exports = { fetchAllPosts, fetchUserPosts, addPostToDb };
