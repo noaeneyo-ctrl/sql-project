@@ -26,7 +26,7 @@ function addPostToDb(body) {
   const user_id = body.userId;
   const title = body.title;
   const content = body.content;
-  const sql = `INSERT INTO posts (user_id, title, content)
+  const sql = `INSERT INTO last_project_db.posts (user_id, title, content)
 VALUES (?, ?, ?);`;
 
   return new Promise((resolve, reject) => {
@@ -36,5 +36,16 @@ VALUES (?, ?, ?);`;
     });
   });
 }
+function deletePostInDb(userId) {
+  const sql = `DELETE FROM last_project_db.posts
+WHERE user_id=?;`;
 
-module.exports = { fetchAllPosts, fetchUserPosts, addPostToDb };
+  return new Promise((resolve, reject) => {
+    con.query(sql, [userId], (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
+}
+
+module.exports = { fetchAllPosts, fetchUserPosts, addPostToDb, deletePostInDb };
