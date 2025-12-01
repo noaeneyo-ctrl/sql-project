@@ -11,13 +11,12 @@ function fetchAllPosts() {
   });
 }
 
-function fetchUserPosts(userId) {
-  const sql = `SELECT * FROM last_project_db.posts WHERE user_id= ? `;
-
+function fetchPostById(postId) {
+  const sql = `SELECT * FROM last_project_db.posts WHERE post_id = ?`;
   return new Promise((resolve, reject) => {
-    con.query(sql, [userId], (err, result) => {
+    con.query(sql, [postId], (err, result) => {
       if (err) return reject(err);
-      resolve(result);
+      resolve(result); // returns an array with 0 or 1 post
     });
   });
 }
@@ -48,7 +47,7 @@ WHERE post_id=?;`;
 
 module.exports = {
   fetchAllPosts,
-  fetchUserPosts,
+  fetchPostById,
   addPostToDb,
   deletePostInDb,
 };
