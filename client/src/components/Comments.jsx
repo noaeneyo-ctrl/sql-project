@@ -40,9 +40,9 @@ function Comments({ post_id }) {
   }
   return (
     <>
-      {comments.map((comment) => {
-        <h3 key={comment.id}>{comment.content}</h3>;
-      })}
+      {comments.map((comment) => (
+        <h4 key={comment.id}>{comment.content}</h4>
+      ))}
     </>
   );
 }
