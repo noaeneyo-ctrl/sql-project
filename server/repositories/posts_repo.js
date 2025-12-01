@@ -11,4 +11,15 @@ function fetchAllPosts() {
   });
 }
 
-module.exports = { fetchAllPosts };
+function fetchUserPosts(userId) {
+  const sql = `SELECT * FROM last_project_db.posts WHERE user_id= ? `;
+
+  return new Promise((resolve, reject) => {
+    con.query(sql, [userId], (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
+}
+
+module.exports = { fetchAllPosts, fetchUserPosts };
