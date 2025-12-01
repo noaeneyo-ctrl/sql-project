@@ -1,8 +1,12 @@
-// const { fetchUserTodos } = require("../repositories/todos_respo");
+const { fetchUserTodos, insertTodo } = require("../repositories/todos_respo");
 
-// async function getUserTodos() {
-//   const posts = await fetchUserTodos();
-//   return posts;
-// }
+async function getUserTodos(userId) {
+  const todos = await fetchUserTodos(userId);
+  return todos;
+}
+async function addTodo(todoData) {
+  const result = await insertTodo(todoData);
+  return result;
+}
 
-// module.exports = { getUserTodos };
+module.exports = { getUserTodos, addTodo };
