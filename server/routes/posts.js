@@ -34,8 +34,8 @@ router.get("/:id", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
-    await addPost(req.body);
-    res.json(posts);
+    const newPost = await addPost(req.body);
+    res.json(newPost);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
